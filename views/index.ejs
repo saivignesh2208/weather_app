@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2E2E2E;
+            color: #FFFFFF;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .weather-info {
+            margin: 10px 0;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        #button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1A73E8;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Weather App</h1>
+        <form action="/getdata" method="GET">
+            <div class="input-container">
+                <input type="text" name="location" id="locationInput" placeholder="Enter location" required>
+                <input id="button" type="submit" value="Get Weather">
+            </div>
+        </form>
+        <div id="weatherData">
+            <!-- If weather data is passed from the server, display it here -->
+            <% if (locals.weather) { %>
+                <div class="weather-info"><strong>Location:</strong> <%= weather.location %>, <%= weather.region %>, <%= weather.country %></div>
+                <div class="weather-info"><strong>Temperature:</strong> <%= weather.tempC %>°C</div>
+                <div class="weather-info"><strong>Feels Like:</strong> <%= weather.feelsLike %>°C</div>
+                <div class="weather-info"><strong>Humidity:</strong> <%= weather.humidity %>%</div>
+                <div class="weather-info"><strong>Weather:</strong> <%= weather.condition %></div>
+                <div class="weather-info"><strong>UV Index:</strong> <%= weather.uv %></div>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+</html>

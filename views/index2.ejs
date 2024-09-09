@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <title>Weather APP</title>
+</head>
+<body>
+    <div class="container">
+        <!-- contents part -->
+        <div class="contents">
+            <div class="currentWeatherDegree">
+                <!-- search bar part -->
+                <div class="searchWeather">
+                    <form action="/getdata" method="get">
+                        <input type="text" class="search" name="location" placeholder="Enter location" required />
+                        <span class="icon searchIcon" onclick="this.parentElement.submit();"><i class="bi bi-search"></i></span>
+                    </form>
+                </div>
+                <!-- degree part -->
+                <div class="weatherDegree">
+                    <div class="degree">
+                        <!-- Weather icon from API -->
+                        <img src="<%= weather.icon %>" alt="weatherIcon" />
+                        <!-- Temperature data -->
+                        <h1><%= weather.tempC %> <span>°C</span></h1>
+                    </div>
+                </div>
+                <!-- location part -->
+                <div class="location">
+                    <span><i class="bi bi-geo"></i></span>
+                    <p><%= weather.location %>/<%= weather.country %></p>
+                </div>
+                <!-- weather situation part -->
+                <div class="weatherSituation">
+                    <span><i class="bi bi-cloud"></i></span>
+                    <p><%= weather.condition %></p>
+                </div>
+            </div>
+
+            <div class="currentWeatherDetails">
+                <!-- degree change part -->
+                <div class="degreeChange">
+                    <span class="cDegree active">°C</span>
+                    <span class="fDegree">°F</span>
+                </div>
+                <!-- today's highlights -->
+                <div class="today-highlight">
+                    <h1 class="title">Today's Highlights</h1>
+                    <div class="highlights">
+                        <!-- Max/Min Temp -->
+                        <div class="single-items minmax">
+                            <h1>Max/Min Temp</h1>
+                            <div>
+                                <span class="icon"><i class="bi bi-thermometer-high"></i></span>
+                                <span>12°C</span> <!-- Replace this with actual min/max temp if available -->
+                            </div>
+                            <div>
+                                <span class="icon"><i class="bi bi-thermometer-low"></i></span>
+                                <span>12°C</span> <!-- Replace this with actual min/max temp if available -->
+                            </div>
+                        </div>
+                        <!-- Feels Like -->
+                        <div class="single-items">
+                            <h1>Feels Like</h1>
+                            <div class="feel-like">
+                                <span class="icon"><i class="bi bi-thermometer"></i></span>
+                                <span class="fleeDegree"><%= weather.feelsLike %>°</span>
+                            </div>
+                        </div>
+                        <!-- Humidity -->
+                        <div class="single-items">
+                            <h1>Humidity</h1>
+                            <div class="humidity">
+                                <span class="icon"><i class="bi bi-droplet-fill"></i></span>
+                                <span class="fleeDegree"><%= weather.humidity %><span style="font-size: 1.1rem">%</span></span>
+                            </div>
+                        </div>
+                        <!-- Wind Speed -->
+                        <div class="single-items">
+                            <h1>Wind Speed</h1>
+                            <div class="wind">
+                                <span class="icon"><i class="bi bi-wind"></i></span>
+                                <span class="fleeDegree"><%= weather.windSpeed %><span style="font-size: 1.1rem">Km/h</span></span>
+                            </div>
+                        </div>
+                        <!-- UV Index -->
+                        <div class="single-items">
+                            <h1>UV Index</h1>
+                            <div class="uv-index">
+                                <span class="icon"><i class="bi bi-brightness-high"></i></span>
+                                <span class="fleeDegree"><%= weather.uv %></span>
+                            </div>
+                        </div>
+                        <!-- Pressure -->
+                        <div class="single-items">
+                            <h1>Pressure</h1>
+                            <div class="pressure">
+                                <span class="icon"><i class="bi bi-cloud-haze2-fill"></i></span>
+                                <span class="fleeDegree"><%= weather.pressure %> <span style="font-size: 1.1rem">hPa</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+</body>
+</html>
